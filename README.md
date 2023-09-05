@@ -5,9 +5,9 @@ A Simple Telegram Bot to Upload Files From **Direct Links** and **Google Drive L
 
 **Features**:
 
-👉 /upload : Upload Remote URL to Telegram.
+👉 Upload Remote URL to Telegram.
 
-👉 /c2v : Convert Document media to Video .
+👉 Convert Document media to Video .
 
 👉 /rnv : Rename Video Files.
 
@@ -19,13 +19,3 @@ A Simple Telegram Bot to Upload Files From **Direct Links** and **Google Drive L
 
 #### LICENSE
 - GPLv3
-
-## 🚀 Deployment
-
-### 💜 Heroku
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-### 💜 Railway
-
-[![Deploy To Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/prxpostern/URLtoTG001&envs=API_ID,API_HASH,BOT_TOKEN)

@@ -99,16 +99,16 @@ async def rnf1(client , u):
         await u.reply_text(text=f"sorry ! you cant use this bot.\n\ndeploy your own bot:\n[Repository_Link](https://github.com/prxpostern/URLtoTG001)", quote=True, disable_web_page_preview=True)
         return
    
-@Client.on_message(filters.private & filters.command(["c2v"]))
-async def to_video1(client , u):
+# @Client.on_message(filters.private & filters.command(["c2v"]))
+# async def to_video1(client , u):
 
-    if u.from_user.id in Config.AUTH_USERS:
-        await to_video2(client , u) 
-    elif not Config.AUTH_USERS:
-        await to_video2(client , u) 
-    else:
-        await u.reply_text(text=f"sorry ! you cant use this bot.\n\ndeploy your own bot:\n[Repository_Link](https://github.com/prxpostern/URLtoTG001)", quote=True, disable_web_page_preview=True)
-        return
+#     if u.from_user.id in Config.AUTH_USERS:
+#         await to_video2(client , u) 
+#     elif not Config.AUTH_USERS:
+#         await to_video2(client , u) 
+#     else:
+#         await u.reply_text(text=f"sorry ! you cant use this bot.\n\ndeploy your own bot:\n[Repository_Link](https://github.com/prxpostern/URLtoTG001)", quote=True, disable_web_page_preview=True)
+#         return
     
 @Client.on_message(filters.private & (filters.audio | filters.document | filters.video))
 async def cinfo1(client , m):
@@ -138,5 +138,16 @@ async def handle_upload_callback(client, callback_query):
     # Check if the user is authorized
     if original_message.from_user.id in Config.AUTH_USERS or not Config.AUTH_USERS:
         await leecher2(client, original_message)
+    else:
+        await callback_query.answer("Sorry, you can't use this bot.", show_alert=True)
+
+@Client.on_callback_query(filters.regex("^c2v_action$"))
+async def handle_upload_callback(client, callback_query):
+    # Fetching the original message (message with the link)
+    original_message = callback_query.message.reply_to_message
+    
+    # Check if the user is authorized
+    if original_message.from_user.id in Config.AUTH_USERS or not Config.AUTH_USERS:
+        await to_video2(client, original_message)
     else:
         await callback_query.answer("Sorry, you can't use this bot.", show_alert=True)

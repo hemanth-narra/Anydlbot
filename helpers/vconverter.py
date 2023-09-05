@@ -19,16 +19,16 @@ async def to_video2(bot , u):
     global status
     probe2 = None
     
-    if not u.reply_to_message:
-        await u.reply_text(text=f"Reply To Your Video !", quote=True)
-        return
+    # if not u.reply_to_message:
+    #     await u.reply_text(text=f"Reply To Your Video !", quote=True)
+    #     return
     
     logger.info(f"status: {status}")
     if status:
         await u.reply_text(text=f"wait until last process finish. then try again.", quote=True)
         return
     
-    m = u.reply_to_message
+    m = u
     
     if m.video or m.document:
         ft = m.document or m.video
