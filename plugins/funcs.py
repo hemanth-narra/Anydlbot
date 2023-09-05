@@ -134,7 +134,7 @@ async def handle_upload_callback(client, callback_query):
         await callback_query.answer("Sorry, you can't use this bot.", show_alert=True)
 
 @Client.on_callback_query(filters.regex("^c2v_action$"))
-async def handle_upload_callback(client, callback_query):
+async def handle_convert_callback(client, callback_query):
     # Fetching the original message (message with the link)
     original_message = callback_query.message.reply_to_message
     
