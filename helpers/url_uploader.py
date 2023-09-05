@@ -49,7 +49,7 @@ async def leecher2(bot , u):
     else:
         url = m.text.strip()
         if os.path.splitext(url)[1]:
-            cfname = unquote(os.path.basename(url))
+            cfname = unquote(os.path.basename(url).split('?')[0])
         else:
             try:
                 r = requests.get(url, allow_redirects=True, stream=True)

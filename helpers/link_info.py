@@ -38,7 +38,7 @@ async def linfo2(bot , m):
   else:
     url = m.text.strip()
     if os.path.splitext(url)[1]:
-      cfname = unquote(os.path.basename(url))
+      cfname = unquote(os.path.basename(url).split('?')[0])
       mt = mimetypes.guess_type(str(url))[0]
     else:
       try:
