@@ -34,12 +34,12 @@ def gd_link_dl(url, file_path):
 
 
 async def leecher2(bot , u):
-    if not u.reply_to_message:
-        await u.reply_text(text=f"Reply To Your Direct Link !", quote=True)
-        return
+    # if not u.reply_to_message:
+    #     await u.reply_text(text=f"Reply To Your Direct Link !", quote=True)
+    #     return
     
     sw = "direct"
-    m = u.reply_to_message
+    m = u
     
     if "|" in m.text:
         url , cfname = m.text.split("|", 1)

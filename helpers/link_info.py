@@ -1,4 +1,5 @@
 import requests, os, mimetypes, json, logging
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from helpers.download_from_url import get_size
 from requests.exceptions import RequestException
 from urllib.parse import unquote
@@ -6,9 +7,13 @@ from urllib.parse import unquote
 logger = logging.getLogger(__name__)
 
 async def linfo2(bot , m):
+
+  upload_button = InlineKeyboardMarkup(
+      [[InlineKeyboardButton("Upload", callback_data="upload_file")]]
+  )
     
   if ("youtube.com" in m.text) or ("youtu.be" in m.text):
-    await m.reply_text(text=f"Youtube Link. Use /upload.", quote=True)
+    await m.reply_text(text=f"Youtube Link", reply_markup=upload_button, quote=True)
     return
   
   if "|" in m.text:
@@ -28,7 +33,7 @@ async def linfo2(bot , m):
         fn = fn.split("\',", 1)[0]
     #logger.info(r.text)
     logger.info(fn)
-    await m.reply_text(text=f"📋 Link Info:\n\nFile: `{fn}`\n\nUse /upload.\n\nSee /help.", quote=True)
+    await m.reply_text(text=f"📋 Link Info:\n\nFile: `{fn}`\n\nUse /upload.\n\nSee /help.", reply_markup=upload_button, quote=True)
     return
   else:
     url = m.text.strip()
@@ -55,4 +60,6 @@ async def linfo2(bot , m):
   url_size = int(r.headers.get("content-length", 0))
   url_size = get_size(url_size)
 
-  await m.reply_text(text=f"📋 Link Info:\n\nFile: `{cfname}`\nMime-Type: `{mt}`\nSize: `{url_size}`\n\nUse /upload as reply to your link, it will upload your link to telegram.\n\nSee /help.", quote=True)
+  await m.reply_text(text=f"📋 Link Info:\n\nFile: `{cfname}`\nMime-Type: `{mt}`\nSize: `{url_size}`\n\nClick below to upload your link to telegram.\n\nSee /help.", 
+                     reply_markup=upload_button,
+                     quote=True)
