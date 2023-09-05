@@ -15,6 +15,10 @@ from helpers.thumbnail_video import thumb_creator
 logger = logging.getLogger(__name__)
 
 async def cinfo2(bot , m):
+
+   convert_button = InlineKeyboardMarkup(
+      [[InlineKeyboardButton("convert", callback_data="c2v_action")]]
+   )
    
    ft = m.audio or m.video or m.document
    fsize = get_size(ft.file_size)
@@ -41,7 +45,7 @@ async def cinfo2(bot , m):
          fn = str(ft.file_name)
       else:
          fn = "No File Name Detected!"
-      await m.reply_text(text=f"📋 Media Info:\n\nFile: `{fn}`\nMime-Type: `{ft.mime_type}`\nSize: `{fsize}`\n\nUse /c2v to convert or /rnv to rename this video.\n\nSee /help.", quote=True)
+      await m.reply_text(text=f"📋 Media Info:\n\nFile: `{fn}`\nMime-Type: `{ft.mime_type}`\nSize: `{fsize}`\n\nUse /c2v to convert or /rnv to rename this video.\n\nSee /help.", reply_markup=convert_button, quote=True)
    else:
       if ft.file_name:
          fn = str(ft.file_name)
