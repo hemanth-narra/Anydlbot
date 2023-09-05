@@ -130,7 +130,7 @@ async def linfo1(client , m):
 #         await u.reply_text(text=f"sorry ! you cant use this bot.\n\ndeploy your own bot:\n[Repository_Link](https://github.com/prxpostern/URLtoTG001)", quote=True, disable_web_page_preview=True)
 #         return
 
-@Client.on_callback_query(filters.callback_data("upload_file"))
+@Client.on_callback_query(filters.regex("^upload_file$"))
 async def handle_upload_callback(client, callback_query):
     # Fetching the original message (message with the link)
     original_message = callback_query.message.reply_to_message
