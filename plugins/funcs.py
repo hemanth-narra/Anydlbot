@@ -30,14 +30,6 @@ A Simple Telegram Bot to
 Upload Files From **Direct** and **Google Drive** and **Youtube** Links,
 Convert Document Media to Video,
 and Rename Audio/Video/Document Files.
-
-/upload : reply to your url .
-    
-    `http://aaa.bbb.ccc/ddd.eee` | **fff.ggg**
-    or
-    `http://aaa.bbb.ccc/ddd.eee`
-
-/c2v : reply to your document to convert it into streamable video.
     
 /rnv : reply to your video. Example:
     
