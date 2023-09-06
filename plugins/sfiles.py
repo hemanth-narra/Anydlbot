@@ -1,3 +1,4 @@
+# When /files command is sent to the bot the it sends videos in '/DATA/Media/Downloads/'
 import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -8,7 +9,7 @@ async def handle_files_command(client, message):
     path = "/DATA/Media/Downloads/"
     
     # Create an inline keyboard
-    keyboard = InlineKeyboardMarkup()
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[])
     
     # Recursively traverse the directory tree
     for root, dirs, files in os.walk(path):
