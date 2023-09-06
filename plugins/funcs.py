@@ -130,6 +130,7 @@ async def handle_upload_callback(client, callback_query):
     # Check if the user is authorized
     if original_message.from_user.id in Config.AUTH_USERS or not Config.AUTH_USERS:
         await leecher2(client, original_message)
+        await callback_query.message.delete()
     else:
         await callback_query.answer("Sorry, you can't use this bot.", show_alert=True)
 
@@ -141,5 +142,6 @@ async def handle_convert_callback(client, callback_query):
     # Check if the user is authorized
     if original_message.from_user.id in Config.AUTH_USERS or not Config.AUTH_USERS:
         await to_video2(client, original_message)
+        await callback_query.message.delete()
     else:
         await callback_query.answer("Sorry, you can't use this bot.", show_alert=True)
